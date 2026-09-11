@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidikan - Katalog Kamera & Lensa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {    
+        theme: {
+                extend: {
+                    colors: {
+                        base: '#14161A',
+                        card: '#1D2024',
+                        line: '#2B2E33',
+                        brass: '#C7A15A',
+                        brasslight: '#E0C182',
+                        ink: '#ECE8DF',
+                        muted: '#96928C',
+                    },
+
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { background-color: #14161A; }
+        .aperture-ring { transition: stroke-dashoffset 0.6s ease; }
+        #mobile-menu { transition: max-height 0.3s ease; }
+    </style>
+</head>
+<body class="bg-base text-ink font-sans antialiased">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-base/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="#" class="font-display text-xl tracking-tight text-ink">Bidikan<span class="text-brass">.</span></a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+        <a href="#katalog" class="hover:text-ink transition-colors">Katalog</a>
+        <a href="#tentang" class="hover:text-ink transition-colors">Tentang</a>
+        <a href="#kontak" class="hover:text-ink transition-colors">Kontak</a>
+      </nav>
+      <a href="#kontak" class="hidden md:inline-block text-sm bg-brass text-base font-medium px-4 py-2 rounded-sm hover:bg-brasslight transition-colors">Hubungi Kami</a>
+
+      <!-- Hamburger -->
+      <button id="menu-btn" aria-label="Buka menu" aria-expanded="false" class="md:hidden flex flex-col justify-center gap-1.5 w-9 h-9 items-center">
+        <span class="block w-6 h-px bg-ink" id="bar1"></span>
+        <span class="block w-6 h-px bg-ink" id="bar2"></span>
+        <span class="block w-6 h-px bg-ink" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0">
+      <nav class="flex flex-col gap-1 pb-5 text-sm text-muted">
+        <a href="#katalog" class="py-2 border-b border-line hover:text-ink">Katalog</a>
+        <a href="#tentang" class="py-2 border-b border-line hover:text-ink">Tentang</a>
+        <a href="#kontak" class="py-2 hover:text-ink">Kontak</a>
+        <a href="#kontak" class="mt-3 text-center bg-brass text-base font-medium px-4 py-2 rounded-sm">Hubungi Kami</a>
+      </nav>
+    </div>
+  </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-10 sm:pb-14 grid
+  grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+  <div>
+        <p class="text-xs font-mono text-brass mb-4">Katalog 2026</p>
+        <h1 class="font-display text-4xl sm:text-5xl leading-tight text-ink max-w-md">
+            Alat yang tepat, buat cerita yang tepat.
+        </h1>
+        <p class="text-muted mt-5 max-w-sm leading-relaxed">
+            kami menyediakan kamera dan lensa untuk pemula sampai fotografer profesional, dari body mirrorless ringkas sampai lensa prime untuk potret.
+        </p>
+        <div class="flex gap-3 mt-7">
+            <a href="#katalog" class="bg-brass text-base font-medium px-5 py-2.5 rounded-sm hover:bg-brasslight transition-colors text-sm">Lihat Katalog</a>
+            <a href="#tentang" class="border border-line px-5 py-2.5 rounded-sm hover:border-brass transition-colors text-sm text-ink">Tentang Kami</a>
+        </div>
+  </div>
+    
+    <!-- Decorative aperture motif -->
+    <div class="hidden sm:flex justify-center lg:justify-end">
+        <svg width="220" height="220" viewBox="0 0 220 220" class="opacity-90">
+            <circle cx="110" cy="110" r="95" fill="none" stroke="#2B2E33" stroke-width="1"/>
+            <circle cx="110" cy="110" r="70" fill="none" stroke="#2B2E33" stroke-width="1"/>
+            <g stroke="#C7A15A" stroke-width="2" fill="none" stroke-linecap="round">
+              <path d="M110 40 L110 75" />
+              <path d="M110 180 L110 145" />
+              <path d="M40 110 L75 110" />
+              <path d="M61 61 L84 84" />
+              <path d="M159 159 L136 136" />
+              <path d="M61 159 L84 136" />
+              <path d="M159 61 L136 84" />
+            </g>
+            <circle cx="110" cy="110" r="28" fill="#1D2024" stroke="#C7A15A" stroke-width="1.5"/>
+        </svg>
+    </div>
+</section>
+
+<!-- CATEGORY CHIPS -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div id="chip-group" class="flex gap-2 overflow-x-auto pb-2 no-scrollbar text-sm">
+        <button data-filter="semua" onclick="filterProducts('semua', this)" class="chip whitespace-nowrap px-4 py-1.5 rounded-full bg-brass text-base font-medium">Semua</button>
+        <button data-filter="mirrorless" onclick="filterProducts('mirrorless', this)" class="chip whitespace-nowrap px-4 py-1.5 rounded-full border border-line text-muted hover:border-brass hover:text-ink transition-colors">Mirrorless</button>
+        <button data-filter="dslr" onclick="filterProducts('dslr', this)" class="chip whitespace-nowrap px-4 py-1.5 rounded-full border border-line text-muted hover:border-brass hover:text-ink transition-colors">DSLR</button>
+        <button data-filter="lensa" onclick="filterProducts('lensa', this)" class="chip whitespace-nowrap px-4 py-1.5 rounded-full border border-line text-muted hover:border-brass hover:text-ink transition-colors">Lensa</button>
+        <button data-filter="aksesoris" onclick="filterProducts('aksesoris', this)" class="chip whitespace-nowrap px-4 py-1.5 rounded-full border border-line text-muted hover:border-brass hover:text-ink transition-colors">Aksesoris</button>
+    </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+     <section id="katalog" class="max-w-6xl mx-auto px-5 sm:px-8 py-10">
+        <h2 class="font-display text-2xl text-ink mb-6">Produk Pilihan</h2>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+    <!-- MiRRORLESS -->
+     <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/sony_alpha_a7_kit.jpg" alt="Sony Alpha A7 IV Kit" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Sony</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Sony Alpha A7 IV Kit</h3>
+        <p class="font-mono text-xs text-muted mt-1">Full Frame · 33MP · 4K60</p>
+        <p class="text-brass font-medium mt-3">Rp 34.000.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+     <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/canon_eos_r8.jpg" alt="Canon EOS R8" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Canon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Canon EOS R8</h3>
+        <p class="font-mono text-xs text-muted mt-1">Full Frame · 24MP · 4K60</p>
+        <p class="text-brass font-medium mt-3">Rp 28.500.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+    <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/fujifilm_xt5.jpg" alt="Fujifilm X-T5" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Fujifilm</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Fujifilm X-T5</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 40MP · 6.2K30</p>
+        <p class="text-brass font-medium mt-3">Rp 26.900.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+    <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/nikon_z50ii.jpg" alt="Nikon Z50 II" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Nikon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Nikon Z50 II</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 20MP · 4K30</p>
+        <p class="text-brass font-medium mt-3">Rp 15.700.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/Sony-ZV-E10-ii.jpg" alt="Sony ZV-E10 II" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Sony</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Sony ZV-E10 II</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 26MP · Vlog Mode</p>
+        <p class="text-brass font-medium mt-3">Rp 13.200.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="mirrorless" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/canon_eos_r50.jpg" alt="Canon EOS R50" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Canon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Canon EOS R50</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 24MP · 4K UHD</p>
+        <p class="text-brass font-medium mt-3">Rp 12.800.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+    <!-- DSLR -->
+     <article data-category="dslr" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/Canon-EOS-90D.jpg" alt="Canon EOS 90D" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Canon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Canon EOS 90D</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 32MP · 4K30</p>
+        <p class="text-brass font-medium mt-3">Rp 19.500.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+    <article data-category="dslr" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/niko_d780.jpg" alt="Nikon D780" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Nikon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Nikon D780</h3>
+        <p class="font-mono text-xs text-muted mt-1">Full Frame · 24MP · 4K30</p>
+        <p class="text-brass font-medium mt-3">Rp 27.300.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="dslr" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/canon_eos5d.jpg" alt="Canon EOS 5D Mark IV" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Canon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Canon EOS 5D Mark IV</h3>
+        <p class="font-mono text-xs text-muted mt-1">Full Frame · 30MP · 4K30</p>
+        <p class="text-brass font-medium mt-3">Rp 32.000.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="dslr" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/nikon_d3500.jpg" alt="Nikon D3500" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Nikon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Nikon D3500</h3>
+        <p class="font-mono text-xs text-muted mt-1">APS-C · 24MP · Full HD</p>
+        <p class="text-brass font-medium mt-3">Rp 7.900.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+     <!-- Lensa -->
+    <article data-category="lensa" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/sony_fe50mm.jpg"Sony FE 50mm f/1.8" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Sony</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Sony FE 50mm f/1.8</h3>
+        <p class="font-mono text-xs text-muted mt-1">Prime · Full Frame</p>
+        <p class="text-brass font-medium mt-3">Rp 2.100.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="lensa" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/canon_rf24-70.jpg" alt="Canon RF 24-70mm f/2.8L" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Canon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Canon RF 24-70mm f/2.8L</h3>
+        <p class="font-mono text-xs text-muted mt-1">Zoom · Full Frame</p>
+        <p class="text-brass font-medium mt-3">Rp 26.500.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="lensa" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/nikonz_35mm.jpg" alt="Nikon Z 35mm f/1.8S" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Nikon</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Nikon Z 35mm f/1.8S</h3>
+        <p class="font-mono text-xs text-muted mt-1">Prime · Full Frame</p>
+        <p class="text-brass font-medium mt-3">Rp 8.400.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="lensa" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/sigma_18300.jpg" alt="Sigma 18-300mm f/3.5-6.3" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Sigma</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Sigma 18-300mm f/3.5-6.3</h3>
+        <p class="font-mono text-xs text-muted mt-1">Zoom · APS-C</p>
+        <p class="text-brass font-medium mt-3">Rp 6.700.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="lensa" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/fujifilm_xf56.jpg" alt="Fujifilm XF 56mm f/1.2" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Fujifilm</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Fujifilm XF 56mm f/1.2</h3>
+        <p class="font-mono text-xs text-muted mt-1">Prime · APS-C</p>
+        <p class="text-brass font-medium mt-3">Rp 13.900.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+
+    <!-- Aksesoris -->
+    <article data-category="aksesoris" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/tripod.jpg" alt="Tripod Studio Pro" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Bidikan</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Tripod Studio Pro</h3>
+        <p class="font-mono text-xs text-muted mt-1">Aluminium · Max 160cm</p>
+        <p class="text-brass font-medium mt-3">Rp 950.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="aksesoris" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/tas_kamera.jpg" alt="Tas Kamera Kanvas" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Bidikan</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Tas Kamera Kanvas</h3>
+        <p class="font-mono text-xs text-muted mt-1">Water Resistant · 2 Body + 3 Lensa</p>
+        <p class="text-brass font-medium mt-3">Rp 650.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="aksesoris" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/softbox.jpg" alt="Softbox Studio Light" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Bidikan</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Softbox Studio Light</h3>
+        <p class="font-mono text-xs text-muted mt-1">LED 5500K · Bluetooth Remote</p>
+        <p class="text-brass font-medium mt-3">Rp 1.800.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="aksesoris" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/sdcard.jpg" alt="SD Card 128GB UHS-II" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">SanDisk</p>
+        <h3 class="font-display text-lg text-ink leading-snug">SD Card 128GB UHS-II</h3>
+        <p class="font-mono text-xs text-muted mt-1">300MB/s · Kelas V90</p>
+        <p class="text-brass font-medium mt-3">Rp 450.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+    <article data-category="aksesoris" class="product-card bg-card border border-line rounded-sm overflow-hidden flex flex-col">
+      <img src="images/filter.jpg" alt="Filter ND Variable 77mm" class="w-full aspect-[4/3] object-cover">
+      <div class="p-4 flex flex-col flex-1">
+        <p class="font-mono text-[11px] text-brass">Bidikan</p>
+        <h3 class="font-display text-lg text-ink leading-snug">Filter ND Variable 77mm</h3>
+        <p class="font-mono text-xs text-muted mt-1">ND2 - ND400 · 77mm</p>
+        <p class="text-brass font-medium mt-3">Rp 850.000</p>
+        <button class="mt-auto pt-4 text-sm border border-line rounded-sm py-2 hover:border-brass hover:text-brass transition-colors">Lihat Detail</button>
+      </div>
+    </article>
+ 
+  </div>
+</section>
+    
+<!-- ABOUT -->
+<section id="tentang" class="max-w-6xl mx-auto px-5 sm:px-8 py-10 border-t border-line">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <h2 class="font-display text-2xl text-ink">Kenapa Bidikan?</h2>
+        <p class="text-muted leading-relaxed text-sm">
+            Kami mulai dari studio foto kecil sebelum menjadi toko peralatan. Setiap produk yang kami jual sudah pernah kami pakai sendiri di lapangan, jadi rekomendasinya bukan cuman dari spesifikasi di atas kertas.
+        </p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak" class="border-t border-line mt-6">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+    <div>
+      <p class="font-display text-lg text-ink mb-2">Bidikan<span class="text-brass">.</span></p>
+      <p class="text-muted leading-relaxed">Kamera, lensa, dan aksesoris untuk fotografer di semua level.</p>
+    </div>
+    <div>
+      <p class="text-ink font-medium mb-2">Tautan</p>
+      <ul class="text-muted space-y-1.5">
+        <li><a href="#katalog" class="hover:text-brass">Katalog</a></li>
+        <li><a href="#tentang" class="hover:text-brass">Tentang</a></li>
+        <li><a href="#" class="hover:text-brass">Cara Pemesanan</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-ink font-medium mb-2">Kontak</p>
+      <ul class="text-muted space-y-1.5">
+        <li>hello@bidikan.id</li>
+        <li>+62 812-3456-7890</li>
+        <li>Jl. Lensa No. 8, Indonesia</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line py-4 text-center text-xs text-muted font-mono">
+    © 2026 Bidikan Studio. Semua hak dilindungi.
+  </div>
+</footer>
+
+<script>
+   
+  function filterProducts(category, btnEl) {
+    document.querySelectorAll('.chip').forEach((chip) => {
+      chip.classList.remove('bg-brass', 'text-base', 'font-medium');
+      chip.classList.add('border', 'border-line', 'text-muted');
+    });
+    btnEl.classList.remove('border', 'border-line', 'text-muted');
+    btnEl.classList.add('bg-brass', 'text-base', 'font-medium');
+ 
+    document.querySelectorAll('.product-card').forEach((card) => {
+      const match = category === 'semua' || card.dataset.category === category;
+      card.classList.toggle('hidden', !match);
+    });
+  }
+ 
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+  btn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menu.style.maxHeight = menuOpen ? menu.scrollHeight + 'px' : '0px';
+    btn.setAttribute('aria-expanded', menuOpen);
+  });
+</script>
+</body>
+</html>
